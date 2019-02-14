@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "cn.lotteryticket.querysystem"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        buildConfigField("String", "TICKET_SECRET", TICKET_SECRET)
+        buildConfigField("String", "TICKET_APP_ID", TICKET_APP_ID)
+        buildConfigField("int", "TIME_CLICK_IGNORE", TIME_CLICK_IGNORE)
+        buildConfigField("String", "HOST_URL", HOST_URL)
+        //sp常量
+        buildConfigField("String", "KEY_APP_INFO", KEY_APP_INFO)
+        buildConfigField("String", "KEY_USER_RECORD", KEY_USER_RECORD)
+        buildConfigField("String", "KEY_MY_FOLLOW", KEY_MY_FOLLOW)
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "6d6a367ddf8cfad5c905facc", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+
+        //dex突破65535的限制
+        multiDexEnabled true
+    }
+    ext {
+        supportLibVersion = '26.0.0'
+    }
+    lintOptions {
+        abortOnError false
+    }
+    signingConfigs {
+        debug {
+//            storeFile file(KEYSTORE)
+//            storePassword STORE_PASSWORD
+//            keyAlias KEYALIAS
+//            keyPassword KEY_PASSWORD
+        }
+        release {
+//            storeFile file(KEYSTORE)
+//            storePassword STORE_PASSWORD
+//            keyAlias KEYALIAS
+//            keyPassword KEY_PASSWORD
+        }
+    }
+    buildTypes {
+        debug {
+            //显示log
+            buildConfigField("boolean", "DEBUG_LOG", "true")
+            versionNameSuffix "-debug"
+            //是否使用代码混淆
+            minifyEnabled false
+            zipAlignEnabled false
+            //移除无用的resource文件
+            shrinkResources false
+            signingConfig signingConfigs.debug
+
+        }
+        release {
+            // 不显示Log
+            buildConfigField("boolean", "DEBUG_LOG", "false")
+
+            //是否使用代码混淆
+            minifyEnabled false
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    packagingOptions {
+        exclude 'Change.Log'
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+
+dependencies {
+    compile 'cn.jiguang.sdk:jpush:3.1.8'
+    compile 'cn.jiguang.sdk:jcore:1.2.6'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile project(':devlib')
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile project(':MPChartLib')
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "utf-8"
+}

@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">彩民开奖查询</string>
+
+    <!-- 请求状态-->
+    <string name="load_system_busy">一不留神，页面走丢啦~</string>
+    <string name="load_loading_dialog_text">加载中</string>
+    <string name="load_empty">暂无数据</string>
+    <string name="load_no_network">好像断网啦~</string>
+    <string name="load_try_again">点击重试</string>
+    <string name="load_net_ungeliable">网络不给力，请稍后再试</string>
+    <string name="load_empty_search">抱歉未找到相关结果</string>
+    <string name="load_loading">正在加载中...</string>
+    <string name="load_time_out">连接超时...</string>
+    <string name="load_user_invalid">当前用户已过期</string>
+    <string name="service_conn_fail">无法连接服务器</string>
+
+    <!--登录-->
+    <string name="account_login_title">登录</string>
+    <string name="account_login_title_right">注册</string>
+    <string name="account_login_btn">确定登录</string>
+    <string name="account_login_forget">忘记密码？</string>
+    <string name="account_login_account_hint">请输入手机号</string>
+    <string name="account_login_verify_hint">请输入查询验证码</string>
+
+    <string name="hello">Hello World, JPush!</string>
+    <string name="tag_hint">Tag can be number, alphabet, underscore, Chinese. Use , to split many tags.</string>
+    <string name="alias_hint">Alias can be number, alphabet, underscore, Chinese.</string>
+    <string name="mobilenumber_hint">The phone number can only start with a "+" or a number,other can only contain "-" and Numbers</string>
+    <string name="style_hint">style should be number</string>
+    <string name="error_style_empty">style cannot be empty</string>
+    <string name="error_alias_empty">alias cannot be empty</string>
+    <string name="error_tag_empty">tag cannot be empty</string>
+    <string name="error_tag_gs_empty">Invalid format</string>
+    <string name="mobilenumber_empty_guide">will clear last set phone number</string>
+    <string name="error_network">Failed to init due to network exception.</string>
+    <string name="logining">Running in background. Please see log.</string>
+    <string name="setting_su">Succeed to set</string>
+
+    <string name="exit_app_title">離開</string>
+    <string name="exit_app_description">是否要關閉App</string>
+    <string name="confirm">確定</string>
+    <string name="cancel">取消</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="ok">好</string>
+
+</resources>
